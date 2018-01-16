@@ -2,10 +2,9 @@ import { NgModule, Optional, SkipSelf } from '@angular/core';
 // libs
 import {
   CoreModule as LibCoreModule,
-  WindowPlatformService
+  WindowPlatformService,
+  throwIfAlreadyLoaded
 } from '@mycompany/core';
-// app
-import { environment } from '../../environments/environment';
 
 // factories
 export function platformWindow() {
@@ -14,10 +13,10 @@ export function platformWindow() {
 
 @NgModule({
   imports: [
-    CoreModule.forRoot([
+    LibCoreModule.forRoot([
       {
         provide: WindowPlatformService,
-        useFactory: win,
+        useFactory: platformWindow,
       }
     ])
   ]

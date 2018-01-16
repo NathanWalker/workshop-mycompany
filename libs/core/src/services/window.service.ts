@@ -9,28 +9,28 @@ export class WindowPlatformService {
 @Injectable()
 export class WindowService {
 
-  private _dialogPromise: Promise<any>;
+  private _dialogOpened = false;
 
   constructor(
     private _platformWindow: WindowPlatformService,
   ) { }
 
   public alert(msg: any): Promise<any> {
-    if (!this._dialogPromise) {
-      this._dialogPromise = new Promise((resolve, reject) => {
+    return new Promise((resolve, reject) => {
+      if (!this._dialogOpened) {
+        this._dialogOpened = true;
         this._resultHandler(this._platformWindow.alert(msg), resolve, reject, true);
-      });
-    }
-    return this._dialogPromise;
+      }
+    });
   }
 
   public confirm(msg: any): Promise<any> {
-    if (!this._dialogPromise) {
-      this._dialogPromise = new Promise((resolve, reject) => {
+    return new Promise((resolve, reject) => {
+      if (!this._dialogOpened) {
+        this._dialogOpened = true;
         this._resultHandler(this._platformWindow.confirm(msg), resolve, reject);
-      });
-    }
-    return this._dialogPromise;
+      }
+    });
   }
 
   private _resultHandler(result: any, resolve: (result?: any) => void, reject: (reason?: any) => void, alwaysResolve?: boolean) {
@@ -41,10 +41,10 @@ export class WindowService {
         } else {
           reject();
         }
-        this._dialogPromise = null;
+        this._dialogOpened = false;
       }, (err) => {
         reject(err);
-        this._dialogPromise = null;
+        this._dialogOpened = false;
       });
     } else {
       if (alwaysResolve || result) {
@@ -52,7 +52,7 @@ export class WindowService {
       } else {
         reject();
       }
-      this._dialogPromise = null;
+      this._dialogOpened = false;
     }
   }
 }
