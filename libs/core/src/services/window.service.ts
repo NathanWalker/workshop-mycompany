@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 @Injectable()
-export class WindowPlatformService {
+export class PlatformWindowService {
   public alert(msg: any) { };
   public confirm(msg: any) { };
 }
@@ -12,7 +12,7 @@ export class WindowService {
   private _dialogOpened = false;
 
   constructor(
-    private _platformWindow: WindowPlatformService,
+    private _platformWindow: PlatformWindowService,
   ) { }
 
   public alert(msg: any): Promise<any> {

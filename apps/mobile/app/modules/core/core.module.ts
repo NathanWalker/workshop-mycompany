@@ -5,7 +5,7 @@ import { TNSFontIconModule } from 'nativescript-ngx-fonticon';
 import { } from 'tns-core-modules/platform';
 import {
   CoreModule as LibCoreModule,
-  WindowPlatformService,
+  PlatformWindowService,
 } from '@mycompany/core';
 
 // app
@@ -17,7 +17,7 @@ import { ITEMS_PROVIDERS } from '../items/services';
   imports: [
     LibCoreModule.forRoot([
       {
-        provide: WindowPlatformService,
+        provide: PlatformWindowService,
         useClass: WindowMobileService,
       },
     ]),
