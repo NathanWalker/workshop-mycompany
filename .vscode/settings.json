@@ -1,4 +1,32 @@
 {
     "editor.tabSize": 2,
-    "editor.formatOnSave": true
+    "editor.formatOnSave": true,
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        "**/node_modules": true,
+        "**/apps/mobile/app/package.json": true,
+        "**/apps/mobile/hooks": true,
+        "**/apps/mobile/platforms": true,
+        "**/apps/mobile/report": true,
+        "**/apps/mobile/app/**/*.js": {
+            "when": "$(basename).ts"
+        },
+        "**/apps/mobile/app/**/*.d.ts": {
+            "when": "$(basename).ts"
+        },
+        "**/apps/mobile/app/**/*.css": {
+            "when": "$(basename).scss"
+        },
+        "**/libs/**/*.js": {
+            "when": "$(basename).ts"
+        },
+        "**/libs/**/*.d.ts": {
+            "when": "$(basename).ts"
+        },
+        "**/libs/**/*.metadata.json": true
+    }
 }
