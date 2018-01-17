@@ -40,3 +40,11 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+
+# libs
+libs/**/*.js
+libs/**/*.map
+libs/**/*.d.ts
+libs/**/*.metadata.json
+libs/**/*.ngfactory.ts
+libs/**/*.ngsummary.json

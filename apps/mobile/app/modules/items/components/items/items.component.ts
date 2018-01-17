@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
+// libs
+import { WindowService } from '@mycompany/core';
+// app
 import { Item } from '../../models';
 import { ItemService } from '../../services/item.service';
 
@@ -11,12 +14,26 @@ import { ItemService } from '../../services/item.service';
 export class ItemsComponent implements OnInit {
   items: Item[];
 
-  // This pattern makes use of Angular’s dependency injection implementation to inject an instance of the ItemService service into this class.
-  // Angular knows about this service because it is included in your app’s CoreModule.
-  // Providing it via the CoreModule ensures it's a singleton across the entire app
-  constructor(private itemService: ItemService) {}
+  constructor(
+    private _itemService: ItemService,
+    private _win: WindowService
+  ) { }
 
   ngOnInit(): void {
-    this.items = this.itemService.getItems();
+    this.items = this._itemService.getItems();
+  }
+
+  public alert(msg: string) {
+    this._win.alert(msg).then(_ => {
+      console.log('alert dismissed.');
+    });
+  }
+
+  public confirm(msg: string) {
+    this._win.confirm(msg).then((confirmed) => {
+      console.log('confirm:', confirmed);
+    }, _ => {
+      console.log('confirm canceled.');
+    });
   }
 }

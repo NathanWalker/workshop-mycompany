@@ -25,3 +25,5 @@ npm-debug.log
 
 # app uses platform specific scss which can inadvertently get renamed which will cause problems
 app/app.scss
+
+package-lock.json
