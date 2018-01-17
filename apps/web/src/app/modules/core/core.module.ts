@@ -3,6 +3,7 @@ import { NgModule, Optional, SkipSelf } from '@angular/core';
 import {
   CoreModule as LibCoreModule,
   PlatformWindowService,
+  PlatformLanguageToken,
   throwIfAlreadyLoaded
 } from '@mycompany/core';
 
@@ -11,12 +12,20 @@ export function platformWindow() {
   return window;
 }
 
+export function platformLanguage() {
+  return window.navigator.language;
+}
+
 @NgModule({
   imports: [
     LibCoreModule.forRoot([
       {
         provide: PlatformWindowService,
         useFactory: platformWindow,
+      },
+      {
+        provide: PlatformLanguageToken,
+        useFactory: platformLanguage,
       }
     ])
   ]

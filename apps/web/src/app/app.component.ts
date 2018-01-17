@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 
-import { WindowService } from '@mycompany/core';
+import { WindowService, PlatformLanguageToken } from '@mycompany/core';
 
 @Component({
   selector: 'app-root',
@@ -10,8 +10,11 @@ import { WindowService } from '@mycompany/core';
 export class AppComponent implements OnInit {
 
   constructor(
-    private _win: WindowService
-  ) { }
+    private _win: WindowService,
+    @Inject(PlatformLanguageToken) private _lang: string
+  ) {
+    console.log('platformLanguage:', this._lang);
+  }
 
   ngOnInit() {
   }
