@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
+
+// libs
+import { PlatformLanguageToken } from '@mycompany/core';
 
 // app
 import { AppService } from './modules/core/services/app.service';
@@ -10,6 +13,9 @@ import { AppService } from './modules/core/services/app.service';
 export class AppComponent {
   constructor(
     // ensure singleton construction on app boot)
-    private _appService: AppService
-  ) {}
+    private _appService: AppService,
+    @Inject(PlatformLanguageToken) private _lang: string,
+  ) {
+    console.log('platformLanguage:', this._lang);
+  }
 }
