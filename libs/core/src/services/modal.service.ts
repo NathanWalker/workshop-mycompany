@@ -14,7 +14,7 @@ export class ModalService {
 
   }
 
-  public open(opts: any) {
+  public open(opts: { cmpType: any, modalOptions?: any }) {
     this._modalRef = this._modal.open(opts.cmpType, opts.modalOptions);
 
     if (this._modalRef) {
