@@ -1,0 +1,10 @@
+<StackLayout rows="auto,*" columns="*" class="w-full h-full">
+  <GridLayout rows="auto" columns="75,*,75" row="0" col="0" class="action-bar p-10">
+    <Button [text]="'fa-times' | fonticon" (tap)="close()" row="0" col="0" class="fa action-item t-30"></Button>
+    <Label [text]="title" textWrap="true" row="0" col="1" class="action-bar-title text-center"></Label>
+  </GridLayout>
+  <StackLayout class="p-20">
+    <Label text="Hello!" class="h1"></Label>
+
+  </StackLayout>
+</StackLayout>

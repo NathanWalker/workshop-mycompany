@@ -1,16 +1,13 @@
 import { Component } from '@angular/core';
-import { ModalService } from '@mycompany/core';
+import { ModalService, SampleModalBase } from '@mycompany/core';
 
 @Component({
   selector: 'ns-sample-modal',
   templateUrl: './sample-modal.component.html'
 })
-export class SampleModal {
+export class SampleModal extends SampleModalBase {
 
-  constructor(private _modal: ModalService) {
-
-  }
-  public close(value?: boolean) {
-    this._modal.close({ value });
+  constructor(public _modal: ModalService) {
+    super(_modal);
   }
 }

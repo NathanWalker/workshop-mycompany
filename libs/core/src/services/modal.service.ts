@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { isObject } from '../helpers';
 
 @Injectable()
 export class PlatformModal {
@@ -37,9 +38,9 @@ export class ModalService {
   public close(result: { value?: any; params?: any }) {
     if (this._modalRef) {
       if (this._modalRef.close) {
-        this._modalRef.close(result.value);
-      } else if (this._modalRef.then) {
-        result.params.closeCallback(result.value);
+        this._modalRef.close(isObject(result) ? result.value : result);
+      } else if (this._modalRef.then && isObject(result)) {
+        result.params.closeCallback(result ? result.value : null);
       }
     }
   }

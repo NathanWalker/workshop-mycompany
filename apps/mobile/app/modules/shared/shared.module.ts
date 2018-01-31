@@ -8,6 +8,8 @@ import { NativeScriptRouterModule } from 'nativescript-angular/router';
 // libs
 import { TNSFontIconModule } from 'nativescript-ngx-fonticon';
 
+import { COMPONENTS, ENTRY_COMPONENTS } from './components';
+
 const SHARED_MODULES = [
   NativeScriptCommonModule,
   NativeScriptFormsModule,
@@ -19,8 +21,16 @@ const SHARED_MODULES = [
   imports: [
     ...SHARED_MODULES
   ],
+  declarations: [
+    ...COMPONENTS,
+    ...ENTRY_COMPONENTS
+  ],
+  entryComponents: [
+    ...ENTRY_COMPONENTS
+  ],
   exports: [
-    ...SHARED_MODULES
+    ...SHARED_MODULES,
+    ...COMPONENTS
   ]
 })
 export class SharedModule { }

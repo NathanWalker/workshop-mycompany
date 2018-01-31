@@ -26,6 +26,7 @@ class names available for styling your app at https://docs.nativescript.org/ui/t
 <StackLayout class="page">
     <Button text="Show alert" (tap)="alert('Hello')" class="btn btn-primary"></Button>
     <Button text="Show confirm" (tap)="confirm('Are you sure?')" class="btn btn-primary"></Button>
+    <Button text="Open Modal" (tap)="openModal()" class="btn btn-primary"></Button>
 
     <ListView [items]="items" class="list-group">
         <ng-template let-item="item">

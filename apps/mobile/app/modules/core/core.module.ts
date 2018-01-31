@@ -7,10 +7,12 @@ import {
   CoreModule as LibCoreModule,
   PlatformWindowService,
   PlatformLanguageToken,
+  PlatformModal,
 } from '@mycompany/core';
 
 // app
 import { CORE_PROVIDERS } from './services';
+import { TNSModalService } from './services/tns-modal.service';
 import { WindowMobileService } from './services/window-mobile.service';
 import { ITEMS_PROVIDERS } from '../items/services';
 
@@ -29,6 +31,10 @@ export function platformLanguage() {
       {
         provide: PlatformLanguageToken,
         useFactory: platformLanguage,
+      },
+      {
+        provide: PlatformModal,
+        useClass: TNSModalService,
       },
     ]),
     TNSFontIconModule.forRoot({
