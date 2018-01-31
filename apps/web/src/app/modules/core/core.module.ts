@@ -2,10 +2,12 @@ import { NgModule, Optional, SkipSelf } from '@angular/core';
 // libs
 import {
   CoreModule as LibCoreModule,
+  PlatformModal,
   PlatformWindowService,
   PlatformLanguageToken,
   throwIfAlreadyLoaded
 } from '@mycompany/core';
+import { MatDialog } from '@angular/material';
 
 // factories
 export function platformWindow() {
@@ -26,6 +28,10 @@ export function platformLanguage() {
       {
         provide: PlatformLanguageToken,
         useFactory: platformLanguage,
+      },
+      {
+        provide: PlatformModal,
+        useClass: MatDialog
       }
     ])
   ]

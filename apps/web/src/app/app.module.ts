@@ -7,6 +7,7 @@ import { NxModule } from '@nrwl/nx';
 // app
 import { CoreModule } from './modules/core/core.module';
 import { AppComponent } from './app.component';
+import { SampleModal } from './sample-modal.component';
 
 @NgModule({
   imports: [
@@ -14,7 +15,13 @@ import { AppComponent } from './app.component';
     NxModule.forRoot(),
     CoreModule
   ],
-  declarations: [AppComponent],
+  declarations: [
+    AppComponent,
+    SampleModal
+  ],
+  entryComponents: [
+    SampleModal
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
