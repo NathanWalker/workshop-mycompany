@@ -1,6 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 
-import { WindowService, PlatformLanguageToken } from '@mycompany/core';
+import { WindowService, PlatformLanguageToken, ModalService } from '@mycompany/core';
+import { SampleModal } from './sample-modal.component';
 
 @Component({
   selector: 'app-root',
@@ -11,6 +12,7 @@ export class AppComponent implements OnInit {
 
   constructor(
     private _win: WindowService,
+    private _modal: ModalService,
     @Inject(PlatformLanguageToken) private _lang: string
   ) {
     console.log('platformLanguage:', this._lang);
@@ -30,6 +32,12 @@ export class AppComponent implements OnInit {
       console.log('confirm:', confirmed);
     }, _ => {
       console.log('confirm canceled.');
+    });
+  }
+
+  public openModal() {
+    this._modal.open({
+      cmpType: SampleModal
     });
   }
 
